@@ -10,85 +10,143 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet" type="text/css">
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('fonts/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('plugins/perfect-scrollbar/css/perfect-scrollbar.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/titan-template/style.css') }}" rel="stylesheet">
+    @stack('style-head')
 </head>
 <body>
-    <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
-            <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
-                </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
+    <div class="container-scroller" >
+        <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+            <div class="text-left navbar-brand-wrapper">
+                <a class="navbar-brand brand-logo" href="#"><i class="mdi mdi-cards-outline"></i>Titan</a>
+                <a class="navbar-brand brand-logo-mini" href="#"><i class="mdi mdi-cards-outline"></i></a>
+            </div>
+            <div class="navbar-menu-wrapper d-flex align-self-stretch align-items-center">
+                <button class="navbar-toggler navbar-toggler align-self-center mr-2" type="button" data-toggle="minimize">
+                    <span class="mdi mdi-menu"></span>
                 </button>
-
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
-
-                    </ul>
-
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
-                        <!-- Authentication Links -->
-                        @guest
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                            </li>
-                        @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    {{--@auth('admin')--}}
-                                        {{--<a href="#"><i class="fa fa-btn fa-unlock"></i>Admin</a>--}}
-                                    {{--@endauth--}}
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        @csrf
-                                    </form>
+                <form class="form-inline mt-2 mt-md-0 d-none d-lg-block">
+                    <input class="form-control mr-sm-2 search" type="text" placeholder="Search">
+                </form>
+                <ul class="navbar-nav ml-lg-auto">
+                    <li class="nav-item nav-profile">
+                        <a class="nav-link" href="#">
+                            {{Auth::user()->name}}<img src="images/faces/face9.jpg">
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link count-indicator" id="notificationDropdown" href="#" data-toggle="dropdown">
+                            <i class="mdi mdi-bell-outline"></i>
+                            <span class="count">7</span>
+                        </a>
+                        <div class="dropdown-menu navbar-dropdown notification-drop-down" aria-labelledby="notificationDropdown">
+                            <a class="dropdown-item" href="#">
+                                <i class="fa fa-birthday-cake text-success fa-fw"></i>
+                                <span class="notification-text">Today is John's birthday</span>
+                            </a>
+                            <a class="dropdown-item" href="#">
+                                <i class="fa fa-phone text-danger fa-fw"></i>
+                                <span class="notification-text">Call John Doe</span>
+                            </a>
+                            <a class="dropdown-item" href="#">
+                                <i class="fa fa-handshake-o text-primary fa-fw"></i>
+                                <span class="notification-text">Meeting Alisa</span>
+                            </a>
+                            <a class="dropdown-item" href="#">
+                                <i class="fa fa-exclamation-triangle text-danger fa-fw"></i>
+                                <span class="notification-text">Server space almost full</span>
+                            </a>
+                            <a class="dropdown-item" href="#">
+                                <i class="fa fa-bell text-warning fa-fw"></i>
+                                <span class="notification-text">Payment Due</span>
+                            </a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link count-indicator" id="MailDropdown" href="#" data-toggle="dropdown">
+                            <i class="mdi mdi-email-outline"></i>
+                            <span class="count">4</span>
+                        </a>
+                        <div class="dropdown-menu navbar-dropdown mail-notification" aria-labelledby="MailDropdown">
+                            <a class="dropdown-item" href="#">
+                                <div class="sender-img">
+                                    <img src="images/faces/face6.jpg" alt="">
+                                    <span class="badge badge-success">&nbsp;</span>
                                 </div>
-                            </li>
-                        @endguest
-                    </ul>
-                </div>
+                                <div class="sender">
+                                    <p class="Sende-name">John Doe</p>
+                                    <p class="Sender-message">Hey, We have a meeting planned at the end of the day.</p>
+                                </div>
+                            </a>
+                            <a class="dropdown-item" href="#">
+                                <div class="sender-img">
+                                    <img src="images/faces/face2.jpg" alt="">
+                                    <span class="badge badge-success">&nbsp;</span>
+                                </div>
+                                <div class="sender">
+                                    <p class="Sende-name">Leanne Jones</p>
+                                    <p class="Sender-message">Can we schedule a call this afternoon?</p>
+                                </div>
+                            </a>
+                            <a class="dropdown-item" href="#">
+                                <div class="sender-img">
+                                    <img src="images/faces/face3.jpg" alt="">
+                                    <span class="badge badge-primary">&nbsp;</span>
+                                </div>
+                                <div class="sender">
+                                    <p class="Sende-name">Stella</p>
+                                    <p class="Sender-message">Great presentation the other day. Keep up the good work!</p>
+                                </div>
+                            </a>
+                            <a class="dropdown-item" href="#">
+                                <div class="sender-img">
+                                    <img src="images/faces/face4.jpg" alt="">
+                                    <span class="badge badge-warning">&nbsp;</span>
+                                </div>
+                                <div class="sender">
+                                    <p class="Sende-name">James Brown</p>
+                                    <p class="Sender-message">Need the updates of the project at the end of the week.</p>
+                                </div>
+                            </a>
+                            <a href="#" class="dropdown-item view-all">View all</a>
+                        </div>
+                    </li>
+                </ul>
+                <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
+                    <span class="mdi mdi-menu"></span>
+                </button>
             </div>
         </nav>
-        @if(Session::has('flash_message'))
-            <div class="container">
-                <div class="alert alert-success"><em> {!! session('flash_message') !!}</em>
+        <div class="container-fluid page-body-wrapper">
+            <div class="row row-offcanvas row-offcanvas-right">
+                <nav class="sidebar sidebar-offcanvas" id="sidebar">
+                    @component('layouts.navibar',['controller'=>$controller])
+                    @endcomponent
+                </nav>
+                <div class="content-wrapper">
+                    @yield('content')
                 </div>
-            </div>
-        @endif
-
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                @include ('errors.list') {{-- Including error file --}}
+                <footer class="footer">
+                    <div class="container-fluid clearfix">
+                        @yield('footer')
+                    </div>
+                </footer>
             </div>
         </div>
-
-        <main class="py-4">
-            @yield('content')
-        </main>
     </div>
+    <!-- Scripts -->
+    <script src="{{ asset('js/jquery/jquery-3.3.1.min.js') }}" defer></script>
+    <script src="{{ asset('plugins/popper.js/popper.min.js') }}" defer></script>
+    <script src="{{ asset('plugins/bootstrap/v4.0.0/bootstrap.min.js') }}" defer></script>
+    <script src="{{ asset('plugins/perfect-scrollbar/perfect-scrollbar.jquery.min.js') }}" defer></script>
+    <script src="{{ asset('js/hoverable-collapse.js') }}" defer></script>
+    <script src="{{ asset('js/misc.js') }}" defer></script>
+@stack('scrip-footer')
 </body>
 </html>

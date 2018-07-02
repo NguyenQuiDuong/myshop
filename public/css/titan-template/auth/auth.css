@@ -1,0 +1,119 @@
+.auth-pages h3 {
+    font-size: 1.56rem;
+    font-weight: 500;
+    line-height: 1.3;
+    color: #000;
+}
+
+.auth-pages .form-group {
+    margin-bottom: 13px;
+}
+
+.auth-pages .form-group label {
+    font-size: 0.88rem;
+    line-height: 15px;
+    margin-bottom: 6px;
+}
+
+.auth-pages .form-group .form-control {
+    height: 48px;
+}
+
+.auth-pages .icheck-square {
+    margin-bottom: 0;
+}
+
+.auth-pages .icheck-square label {
+    font-size: 13px;
+    line-height: 2.31;
+    text-align: left;
+    color: #737475;
+    margin-left: 12px;
+}
+
+.auth-pages .forgot-pass {
+    font-size: 13px;
+    line-height: 2.31;
+    text-align: right;
+    color: #1c2c3f;
+}
+
+.auth-pages button {
+    font-size: 0.84rem;
+    font-weight: 500;
+}
+
+.auth-pages button.enter-btn {
+    height: 45px;
+    margin-bottom: 28px;
+}
+
+.auth-pages a.btn {
+    height: 45px;
+    font-size: 0.84rem;
+    font-weight: 500;
+    padding: 11px 30px;
+    border: none;
+    line-height: 1.88;
+    position: relative;
+    color: white;
+}
+
+.auth-pages a.btn:before {
+    font: 14px/1 FontAwesome;
+    font-size: 0.84rem;
+    font-size: inherit;
+    text-rendering: auto;
+    display: inline-block;
+    margin-right: 12px;
+}
+
+.auth-pages a.btn-facebook {
+    background-color: #3f51b5;
+    margin-right: 10px;
+}
+
+.auth-pages a.btn-facebook:before {
+    content: "\f09a";
+}
+
+.auth-pages a.btn-google {
+    background-color: #f44336;
+}
+
+.auth-pages a.btn-google:before {
+    content: "\f0d5";
+}
+
+.auth-pages .sign-up {
+    font-size: 1rem;
+    margin-top: 30px;
+    margin-bottom: 0;
+}
+
+.auth-pages .terms {
+    font-size: 1rem;
+    text-align: center;
+    margin-top: 23px;
+    margin-bottom: 0;
+}
+
+.auth-pages .terms a {
+    color: inherit;
+    text-decoration: underline;
+}
+
+.auth-pages.option-2, .auth-pages.login-2 {
+    padding: 0;
+    height: 100%;
+    min-height: 100vh;
+    width: 100%;
+    position: relative;
+}
+
+.auth-pages.option-2 .card, .auth-pages.login-2 .card {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+}

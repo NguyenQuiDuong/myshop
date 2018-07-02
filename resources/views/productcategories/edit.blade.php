@@ -4,28 +4,38 @@
 @section('title', '| Edit Post')
 
 @section('content')
-    <div class="row">
+    <h3 class="page-title">Edit Category</h3>
+    <div class="row mb-2">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
+                    {{-- Using the Laravel HTML Form Collective to create our form --}}
+                    {{ Form::model($category,array('route' => array('categories.update', $category->id), 'method' => 'PUT', 'class'=>'cmxform')) }}
 
-        <div class="col-md-8 col-md-offset-2">
-
-            <h1>Edit Post</h1>
-            <hr>
-            {{ Form::model($category, array('route' => array('categories.update', $category->id), 'method' => 'PUT')) }}
-            <div class="form-group">
-                {{ Form::label('name', 'Name') }}
-                {{ Form::text('name', null, array('class' => 'form-control')) }}
-                <br>
-
-                {{ Form::label('parent_id', 'Parent') }}
-                {{ Form::select('parent_id',$product_categories, array('class' => 'form-control')) }}
-                <br>
-
-                {{ Form::label('description', 'Description') }}
-                {{ Form::textarea('description', null, array('class' => 'form-control')) }}
-                <br>
-
-                {{ Form::submit('Save', array('class' => 'btn btn-success btn-lg btn-block')) }}
-                {{ Form::close() }}
+                    <div class="form-group">
+                        {{ Form::label('name', 'Name') }}
+                        {{ Form::text('name', null, array('class' => 'form-control')) }}
+                        @if($errors->get('name'))
+                            <label id="cname-error" class="error text-danger" for="cname">{{$errors->first('name')}}</label>
+                        @endif
+                    </div>
+                    <div class="form-group">
+                        {{ Form::label('parent_id', 'Parent Category') }}
+                        {{ Form::select('parent_id',$product_categories,null, array('class' => 'form-control')) }}
+                        @if($errors->get('parent_id'))
+                            <label id="cparent_id-error" class="error text-danger" for="cparent_id">{{$errors->first('parent_id')}}</label>
+                        @endif
+                    </div>
+                    <div class="form-group">
+                        {{ Form::label('description', 'Description') }}
+                        {{ Form::textarea('description', null, array('class' => 'form-control')) }}
+                        @if($errors->get('description'))
+                            <label id="cdescription-error" class="error text-danger" for="cdescription">{{$errors->first('description')}}</label>
+                        @endif
+                    </div>
+                    {{ Form::submit('Save', array('class' => 'btn btn-primary')) }}
+                    {{ Form::close() }}
+                </div>
             </div>
         </div>
     </div>

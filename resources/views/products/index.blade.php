@@ -1,27 +1,45 @@
 
 @extends('layouts.app')
 @section('content')
-    <div class="container">
-        <div class="row">
-            <div class="col-md-10 col-md-offset-1">
-                <div class="panel panel-default">
-                    <div class="panel-heading"><h3>Posts</h3></div>
-                    <div class="panel-heading">Page {{ $posts->currentPage() }} of {{ $posts->lastPage() }}</div>
-                    @foreach ($posts as $post)
-                        <div class="panel-body">
-                            <li style="list-style-type:disc">
-                                <a href="{{ route('posts.show', $post->id ) }}"><b>{{ $post->title }}</b><br>
-                                    <p class="teaser">
-                                        {{  str_limit($post->body, 100) }} {{-- Limit teaser to 100 characters --}}
-                                    </p>
-                                </a>
-                            </li>
-                        </div>
+    <h3 class="page-title">Products</h3>
+    <div class="row mb-2">Trang {{ $products->currentPage() }}
+        trong {{ $products->lastPage() }}</div>
+    <div class="card">
+        <div class="card-body">
+            <div class="table-responsive ps ps--theme_default">
+
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>
+                            ID
+                        </th>
+                        <th>
+                            Name
+                        </th>
+                        <th>
+                            Description
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @foreach ($products as $product)
+                        <tr>
+                            <td>
+                                {{ $product->id }}
+                            </td>
+                            <td>
+                                <a href="{{action("ProductController@edit",$product->id)}}">{{ $product->name }}</a>
+                                {{$product->barrcode}}
+                            </td>
+                            <td>
+                                {{  str_limit($product->description, 100) }}
+                            </td>
+                        </tr>
                     @endforeach
-                </div>
-                <div class="text-center">
-                    {!! $posts->links() !!}
-                </div>
+                    </tbody>
+                </table>
+
             </div>
         </div>
     </div>

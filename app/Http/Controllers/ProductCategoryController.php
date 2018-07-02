@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\ProductCategory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 
 class ProductCategoryController extends Controller
 {
@@ -56,10 +57,10 @@ class ProductCategoryController extends Controller
 
         //Validating title and body field
         $this->validate($request, [
-            'parent_id'=>'',
+            'parent_id'=>'nullable|numeric',
             'name'=>'required|max:100',
             'description' =>'',
-        ]);
+        ],ProductCategory::MESSAGES);
 
         $category = ProductCategory::create($request->all());
 
@@ -87,15 +88,16 @@ class ProductCategoryController extends Controller
         $this->validate($request, [
             'name'=>'required|max:100',
             'description'=>'required',
-        ]);
+            'parent_id'=>'nullable|numeric'
+        ],ProductCategory::MESSAGES);
 
         $category = ProductCategory::findOrFail($id);
         $category->name = $request->input('name');
-        $category->body = $request->input('body');
+        $category->description = $request->input('description');
+        $category->parent_id = $request->input('parent_id');
         $category->save();
 
-        return redirect()->route('productcategories.show',
-            $category->id)->with('flash_message',
+        return redirect()->route('categories.index')->with('flash_message',
             'Article, '. $category->title.' updated');
 
     }
@@ -110,7 +112,7 @@ class ProductCategoryController extends Controller
         $category = ProductCategory::findOrFail($id);
         $category->delete();
 
-        return redirect()->route('productcategories.index')
+        return redirect()->route('categories.index')
             ->with('flash_message',
                 'Category successfully deleted');
 

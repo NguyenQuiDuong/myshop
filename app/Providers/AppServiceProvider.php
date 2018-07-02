@@ -16,6 +16,15 @@ class AppServiceProvider extends ServiceProvider
     {
         //Set max key length
         Schema::defaultStringLength(191);
+        app('view')->composer('layouts.app', function ($view) {
+            $action = app('request')->route()->getAction();
+
+            $controller = class_basename($action['controller']);
+
+            list($controller, $action) = explode('@', $controller);
+
+            $view->with(compact('controller', 'action'));
+        });
     }
 
     /**

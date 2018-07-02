@@ -22,6 +22,17 @@ class ProductCategory extends Model
     protected $fillable = ['parent_id', 'name', 'description', 'created_at', 'updated_at'];
 
     /**
+     * Use to replace message for validate
+     * @var array
+     */
+    public const MESSAGES = [
+        'name.required' => 'Name is required',
+        'name.between' => 'Name must have length small than 100 character',
+        'description.required' => 'Description is required',
+        'parent_id.numeric' =>  'Parent Id must is numeric'
+    ];
+
+    /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function productCategory()

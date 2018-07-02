@@ -14,6 +14,7 @@ class CreateProductImports extends Migration
     public function up()
     {
         Schema::create('product_imports', function (Blueprint $table) {
+            $table->increments('id');
             $table->integer('product_id')->unsigned();
             $table->foreign('product_id')->references('id')->on('products');
             $table->integer("import_price");
