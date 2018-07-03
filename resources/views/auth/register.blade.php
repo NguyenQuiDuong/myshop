@@ -2,7 +2,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Titan Admin</title>
+    <title>Supper Admin</title>
     <!-- Styles -->
     <link href="{{ asset('fonts/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
     <link href="{{ asset('plugins/perfect-scrollbar/css/perfect-scrollbar.min.css') }}" rel="stylesheet">
