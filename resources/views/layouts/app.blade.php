@@ -35,10 +35,22 @@
                     <input class="form-control mr-sm-2 search" type="text" placeholder="Search">
                 </form>
                 <ul class="navbar-nav ml-lg-auto">
-                    <li class="nav-item nav-profile">
-                        <a class="nav-link" href="#">
+                    <li class="nav-item nav-profile dropdown">
+                        <a class="nav-link" href="#" data-toggle="dropdown">
                             {{Auth::user()->name}}<img src="images/faces/face9.jpg">
                         </a>
+                        <div class="dropdown-menu navbar-dropdown notification-drop-down" aria-labelledby="notificationDropdown">
+                            <a class="dropdown-item" href="{{ route('logout') }}"
+                               onclick="event.preventDefault();
+                                             document.getElementById('logout-form').submit();">
+                                <i class="fa fa-birthday-cake text-success fa-fw"></i>
+                                <span class="notification-text">Logout</span>
+                            </a>
+
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                {{ csrf_field() }}
+                            </form>
+                        </div>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link count-indicator" id="notificationDropdown" href="#" data-toggle="dropdown">
