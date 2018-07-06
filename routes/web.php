@@ -23,4 +23,5 @@ Route::resource('users', 'UserController');
 Route::resource('roles', 'RoleController');
 Route::resource('permissions', 'PermissionController');
 Route::resource('products/categories', 'ProductCategoryController');
-Route::resource('products', 'ProductController');
+Route::resource('products', 'ProductApiController');
+Route::resource('product-import', 'ProductImportController');

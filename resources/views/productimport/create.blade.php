@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', '| Edit Product')
+@section('title', '| Import product')
 
 @push('style-head')
     <link href="{{ asset('plugins/bootstrap/datepicker/bootstrap-datepicker.min.css') }}" rel="stylesheet">
@@ -13,44 +13,29 @@
             <div class="card">
                 <div class="card-body">
                     {{-- Using the Laravel HTML Form Collective to create our form --}}
-                    {{ Form::model($product,array('route' => ['products.update',$product->id], 'class'=>'cmxform')) }}
+                    {{ Form::open(array('route' => 'product-import.store', 'class'=>'cmxform')) }}
 
+                    {{ Form::hidden('product_id',null,['id'=>'product_id']) }}
                     <div class="row">
                         <div class="form-group col-md-6">
                             <div class="control-group>">
                                 {{ Form::label('name', 'Name') }}
-                                {{ Form::text('name', null, array('class' => 'form-control')) }}
-                                @if($errors->get('name'))
-                                    <label id="name-error" class="error text-danger"
-                                           for="name">{{$errors->first('name')}}</label>
-                                @endif
+                                {{ Form::text('name', null, array('class' => 'form-control','id'=>'name_product', 'disabled')) }}
                             </div>
 
                             <div class="control-group>">
                                 {{ Form::label('barcode', 'Barcode') }}
-                                {{ Form::text('barcode', null, array('class' => 'form-control')) }}
-                                @if($errors->get('barcode'))
-                                    <label id="barcode-error" class="error text-danger"
-                                           for="barcode">{{$errors->first('barcode')}}</label>
-                                @endif
+                                {{ Form::text('barcode', null, array('class' => 'form-control', 'id'=>'barcode_product')) }}
                             </div>
 
                             <div class="control-group>">
                                 {{ Form::label('category_id', 'Category') }}
-                                {{ Form::select('category_id',$product_categories,null, array('class' => 'form-control')) }}
-                                @if($errors->get('category_id'))
-                                    <label id="category_id-error" class="error text-danger"
-                                           for="category_id">{{$errors->first('category_id')}}</label>
-                                @endif
+                                {{ Form::text('category_id',null, array('class' => 'form-control')) }}
                             </div>
 
                             <div class="control-group>">
                                 {{ Form::label('description', 'Description') }}
                                 {{ Form::textarea('description', null, array('class' => 'form-control')) }}
-                                @if($errors->get('description'))
-                                    <label id="description-error" class="error text-danger"
-                                           for="description">{{$errors->first('description')}}</label>
-                                @endif
                             </div>
 
                         </div>
@@ -122,5 +107,5 @@
 @endsection
 @push('scrip-footer')
     <script src="{{ asset('plugins/bootstrap/datepicker/bootstrap-datepicker.min.js') }}" defer></script>
-    <script src="{{ asset('js/products/create.js') }}" defer></script>
+    <script src="{{ asset('js/product-import/create.js') }}" defer></script>
 @endpush

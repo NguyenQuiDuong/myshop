@@ -66,7 +66,7 @@
                                 <a href="#" class="forgot-pass">Forgot password</a>
                             </div>
                             <div class="text-center">
-                                <button type="submit" class="btn btn-primary btn-block enter-btn">Login</button>
+                                <button type="submit" class="btn btn-primary btn-block enter-btn">Register</button>
                             </div>
                             <a href="#" class="facebook-login btn btn-facebook">Facebook</a>
                             <a href="#" class="google-login btn btn-google">Google+</a>

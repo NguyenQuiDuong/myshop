@@ -25,8 +25,8 @@ class CreateProductsTable extends Migration
             $table->integer("trade_price");
             $table->integer('quantity');
             $table->integer('unit');
+            $table->string("image")->nullable();
             $table->integer("product_import_id")->nullable()->unsigned();
-            $table->foreign('product_import_id')->references('id')->on('product_imports');
             $table->timestamps();
         });
     }

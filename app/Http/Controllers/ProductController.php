@@ -65,6 +65,8 @@ class ProductController extends Controller
         $product_import->unit = 1;
         $product_import->user()->associate($user);
         $product_import->save();
+        $product->product_import_id = $product_import->id;
+        $product->update();
         return redirect()->route('products.index');
     }
 

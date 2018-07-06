@@ -56,7 +56,7 @@
                             </div>
                             <a href="#" class="facebook-login btn btn-facebook">Facebook</a>
                             <a href="#" class="google-login btn btn-google">Google+</a>
-                            <p class="sign-up">Don't have an Account?<a href="#">Sign Up</a></p>
+                            <p class="sign-up">Don't have an Account?<a href="{{route("register")}}">Sign Up</a></p>
                         </form>
                     </div>
                 </div>

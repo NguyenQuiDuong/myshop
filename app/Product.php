@@ -21,7 +21,7 @@ class Product extends Model
     /**
      * @var array
      */
-    protected $fillable = ['category_id', 'barcode', 'name', 'description', 'created_at', 'updated_at'];
+    protected $fillable = ['category_id', 'barcode', 'name', 'description', 'import_price', 'retail_price', 'trade_price', 'quantity', 'unit','created_at', 'updated_at'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

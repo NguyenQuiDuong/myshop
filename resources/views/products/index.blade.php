@@ -29,7 +29,7 @@
                                 {{ $product->id }}
                             </td>
                             <td>
-                                <a href="{{action("ProductController@edit",$product->id)}}">{{ $product->name }}</a>
+                                <a href="{{action("ProductApiController",$product->id)}}">{{ $product->name }}</a>
                                 {{$product->barrcode}}
                             </td>
                             <td>
