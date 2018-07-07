@@ -154,7 +154,7 @@ return [
         Spatie\Permission\PermissionServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
         //Eloquent Model Generator
-        Krlove\EloquentModelGenerator\Provider\GeneratorServiceProvider::class,
+//        Krlove\EloquentModelGenerator\Provider\GeneratorServiceProvider::class,
 
         /*
          * Application Service Providers...
