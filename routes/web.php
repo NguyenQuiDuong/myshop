@@ -23,5 +23,14 @@ Route::resource('users', 'UserController');
 Route::resource('roles', 'RoleController');
 Route::resource('permissions', 'PermissionController');
 Route::resource('products/categories', 'ProductCategoryController');
-Route::resource('products', 'ProductApiController');
+Route::resource('products', 'ProductController');
 Route::resource('product-import', 'ProductImportController');
+// just for fucking stupid openshift
+Route::get('health.php', function () {
+    try {
+        \DB::connection()->getPdo();
+        return 'OK';
+    } catch (\Exception $e) {
+        abort(500, "Connection failed: " . $e->getMessage());
+    }
+});
