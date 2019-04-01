@@ -68,12 +68,22 @@ class ProductApiController extends Controller
     /**
      * Remove the specified resource from storage.
      *
+     * @param  \Illuminate\Http\Request  $request
      * @param  int  $barcode
      * @return \Illuminate\Http\Response
      */
-    public function barcode($barcode){
+    public function barcode(Request $request,$barcode){
+        $isTypeahead=false;
         $product = new Product();
-        $product = $product->where('barcode','=',$barcode)->first();
-        return response($product);
+        if ($request['typeahead']){
+            $isTypeahead = $request['typeahead'];
+        }
+        if ($isTypeahead){
+            $products = $product->where('barcode','like',"%$barcode%")->get();
+            return response($products);
+        }else{
+            $product = $product->where('barcode','=',$barcode)->first();
+            return response($product);
+        }
     }
 }

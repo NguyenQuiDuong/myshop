@@ -25,7 +25,7 @@
 
                             <div class="control-group>">
                                 {{ Form::label('barcode', 'Barcode') }}
-                                {{ Form::text('barcode', null, array('class' => 'form-control', 'id'=>'barcode_product')) }}
+                                {{ Form::text('barcode', null, array('class' => 'form-control', 'id'=>'barcode_product','autocomplete'=>'off')) }}
                             </div>
 
                             <div class="control-group>">
@@ -107,5 +107,6 @@
 @endsection
 @push('scrip-footer')
     <script src="{{ asset('plugins/bootstrap/datepicker/bootstrap-datepicker.min.js') }}" defer></script>
+    <script src="{{ asset('plugins/typehead3/bootstrap3-typeahead.min.js') }}" defer></script>
     <script src="{{ asset('js/product-import/create.js') }}" defer></script>
 @endpush
