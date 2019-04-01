@@ -13,7 +13,7 @@
         <div class="collapse" id="dashboardSubmenu">
             <ul class="nav flex-column sub-menu">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{action('ProductApiController')}}">List product</a>
+                    <a class="nav-link" href="{{action('ProductController@index')}}">List product</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{action('ProductController@create')}}">Create product</a>
