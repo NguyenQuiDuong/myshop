@@ -151,7 +151,7 @@ return [
          * Package Service Providers...
          */
         //Spatie
-//        Spatie\Permission\PermissionServiceProvider::class,
+        Spatie\Permission\PermissionServiceProvider::class,
         //Collective\Html\HtmlServiceProvider::class,
         //Eloquent Model Generator
 //        Krlove\EloquentModelGenerator\Provider\GeneratorServiceProvider::class,
