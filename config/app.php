@@ -151,7 +151,7 @@ return [
          * Package Service Providers...
          */
         //Spatie
-        Spatie\Permission\PermissionServiceProvider::class,
+//        Spatie\Permission\PermissionServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
         //Eloquent Model Generator
 //        Krlove\EloquentModelGenerator\Provider\GeneratorServiceProvider::class,
@@ -166,7 +166,7 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         //Ide_helper
-        Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
+        //Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
 
     ],
 
